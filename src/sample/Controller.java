@@ -110,6 +110,10 @@ public class Controller implements Initializable {
 
     public void renameSong() {
         System.out.println("renameGo");
+
+
+
+        // Erhöhe den Zähler um 1, damit das nächste File im Ordner gewählt werden kann.
         me.setAnzahlBenenner(me.getAnzahlBenenner()+1);
         benenneFelder();
     }
@@ -160,7 +164,7 @@ public class Controller implements Initializable {
     }
 
     public void benenneFelder() {
-        boolean hasName;
+
         Path path = Paths.get(me.getMeineSongs().get(me.getAnzahlBenenner()).getAbsolutePath());
         MyMp3 mp3_2 = null;
         try {
