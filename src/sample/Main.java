@@ -9,18 +9,22 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     static Stage primaryStage;
+    static Parent root;
     @Override
     public void start(Stage primaryStage) throws Exception{
 
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+
+
 
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 600, 300));
 
         primaryStage.show();
     }
+
 
 
     public static void main(String[] args) {

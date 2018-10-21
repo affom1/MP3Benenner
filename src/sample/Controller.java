@@ -103,6 +103,9 @@ public class Controller implements Initializable {
         nurMp3undM4afiles = new ArrayList<>();
         renameButton.setDefaultButton(true);
 
+
+    
+
         renameButton.setOnAction((ActionEvent e) -> {
             renameSong();
         });
@@ -110,9 +113,19 @@ public class Controller implements Initializable {
 
     public void renameSong() {
         System.out.println("renameGo");
+        me.getMyMp3().getId3v1Tag().setArtist(interpretTF.getText());
+        me.getMyMp3().getId3v1Tag().setTitle(titelTF.getText());
 
-
-
+        //Speichere das File
+        try {
+            me.getMyMp3().save(me.getMyMp3(), me.getMeineSongs().get(me.getAnzahlBenenner()).getAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Speichern nicht erfolgreich 1");
+        } catch (NotSupportedException e) {
+            e.printStackTrace();
+            System.out.println("Speichern nicht erfolgreich 2");
+        }
         // Erhöhe den Zähler um 1, damit das nächste File im Ordner gewählt werden kann.
         me.setAnzahlBenenner(me.getAnzahlBenenner()+1);
         benenneFelder();
@@ -204,6 +217,9 @@ public class Controller implements Initializable {
 //        if (titelTF.getText()=="") titelTF.setText("void");
         interpretTF.setText(mp3_2.getId3v2Tag().getArtist());
 //        if (interpretTF.getText()=="") interpretTF.setText("void");
+
+        // am Schluss, dass MP3 dem User hinzufügen
+        me.setMyMp3(mp3_2);
 
     }
 
